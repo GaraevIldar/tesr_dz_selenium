@@ -1,0 +1,7 @@
+{
+"TC-1_SuccessLogin": {
+  "username": "practice",
+  "password": "SuperSecretPassword!",
+  "url" : "https://practice.expandtesting.com/login"
+  }
+}
