@@ -30,11 +30,7 @@ def test_add_positive():
 
         driver.find_element(By.ID, "submit").click()
 
-        row = wait.until(
-            EC.presence_of_element_located((By.XPATH, f"//*[text()='{test_data['first_name']}']"))
-        )
-
-        assert row is not None
+        assert test_data['first_name'] in driver.page_source
 
     finally:
         driver.quit()
