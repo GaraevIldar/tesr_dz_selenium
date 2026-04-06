@@ -17,3 +17,4 @@ class DataProvider: #Класс для работы с json файлами
 
     def get_test_case_ids(self): # Функция для получения списка ключей всех тест-кейсов
         return list(self.data.keys())
+

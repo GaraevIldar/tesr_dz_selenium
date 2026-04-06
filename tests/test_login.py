@@ -18,15 +18,14 @@ def test_login_positive():
 
         driver.get(test_data["url"])
 
-        username = wait.until(EC.presence_of_element_located((By.ID, "username")))
-        username.send_keys(test_data["username"])
+        driver.find_element(By.ID, "username").send_keys(test_data["username"])
 
-        password = driver.find_element(By.ID, "password")
-        password.send_keys(test_data["password"])
+        driver.find_element(By.ID, "password").send_keys(test_data["password"])
 
         driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
 
         wait.until(EC.url_contains("/secure"))
+
         assert "/secure" in driver.current_url
 
     finally:
