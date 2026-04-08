@@ -22,7 +22,7 @@ def test_login_positive():
 
         driver.find_element(By.ID, "password").send_keys(test_data["password"])
 
-        driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+        driver.find_element(By.ID, "submit-login").click()
 
         wait.until(EC.url_contains("/secure"))
 
