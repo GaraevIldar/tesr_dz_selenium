@@ -1,6 +1,8 @@
 {
 "TC-1_UpdateObject": {
-  "first_name": "test",
+  "form_data": {
+      "firstName": "test"
+  },
   "url": "https://demoqa.com/webtables"
   }
 }

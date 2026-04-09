@@ -1,17 +1,17 @@
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
 
+from page_object.page_web_tables import WebTables
 from tests.test_add import positive_data_provider
 from utilities.data_provider import DataProvider
 
 
 
 positive_data_provider = DataProvider("delete","data_delete_positive_test.json")
+driver = webdriver.Chrome()
+page = WebTables(driver)
 
 def test_delete_positive():
 
-    driver = webdriver.Chrome()
     driver.maximize_window()
 
     try:
@@ -19,7 +19,7 @@ def test_delete_positive():
 
         driver.get(test_data["url"])
 
-        driver.find_element(By.ID, "delete-record-1").click()
+        page.delete_object("delete-record-1")
 
         assert "Cierra" not in driver.page_source
 

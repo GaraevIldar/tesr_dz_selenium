@@ -1,36 +1,22 @@
-from selenium.webdriver.support import expected_conditions as EC
-
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from tenacity import sleep_using_event
 
 from utilities.data_provider import DataProvider
+from page_object.page_web_tables import WebTables
 
 positive_data_provider = DataProvider("add","data_add_positive_test.json")
+driver = webdriver.Chrome()
+page = WebTables(driver)
 
 def test_add_positive():
-
-    driver = webdriver.Chrome()
-    wait = WebDriverWait(driver, 10)
-
     try:
-        test_data = positive_data_provider.get_test_case("TC-1_AddObject")
+        test_data = positive_data_provider.get_test_case("TC-1_AddObject")["form_data"]
+        url = positive_data_provider.get_test_case("TC-1_AddObject")["url"]
 
-        driver.get(test_data["url"])
+        driver.get(url)
 
-        driver.find_element(By.ID, "addNewRecordButton").click()
+        page.add_object(test_data)
 
-        driver.find_element(By.ID, "firstName").send_keys(test_data["first_name"])
-        driver.find_element(By.ID, "lastName").send_keys(test_data["last_name"])
-        driver.find_element(By.ID, "userEmail").send_keys(test_data["email"])
-        driver.find_element(By.ID, "age").send_keys(test_data["age"])
-        driver.find_element(By.ID, "salary").send_keys(test_data["salary"])
-        driver.find_element(By.ID, "department").send_keys(test_data["department"])
-
-        driver.find_element(By.ID, "submit").click()
-
-        assert test_data['first_name'] in driver.page_source
+        assert test_data['firstName'] in driver.page_source
 
     finally:
         driver.quit()

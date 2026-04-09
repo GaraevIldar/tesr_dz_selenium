@@ -1,11 +1,13 @@
 {
   "TC-1_AddObject": {
-    "first_name": "test_first_name",
-    "last_name": "test_last_name",
-    "email": "test@gmail.com",
-    "age": "123",
-    "salary": "123",
-    "department": "123",
+    "form_data": {
+      "firstName": "test_first_name",
+      "lastName": "test_last_name",
+      "userEmail": "test@gmail.com",
+      "age": "123",
+      "salary": "123",
+      "department": "123"
+    },
     "url": "https://demoqa.com/webtables"
   }
 }
